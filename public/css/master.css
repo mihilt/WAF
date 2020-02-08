@@ -1,3 +1,35 @@
+/* public/css/master.css */
+
 body {
   font-family: 'Open Sans', sans-serif;
+}
+.breadcrumb-item {
+  font-size: 0.8em !important;
+}
+
+//와ㅋㅋ CSS에서 ellipsis 처리가 가능 ㅋㅋ
+.ellipsis{
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.board-table {
+  table-layout: fixed;
+}
+.board-table .date {
+  width: 100px;
+}
+
+.post-body{
+  white-space: pre-line;
+}
+.post-info{
+  font-size: 0.8em;
+}
+
+.user-form {
+  width: 400px;
 }
