@@ -15,10 +15,18 @@ body {
 .board-table {
   table-layout: fixed;
 }
-.board-table .author,
+.board-table .author {
+  text-align: center;
+  width: 60px;
+}
+
 .board-table .date {
   text-align: center;
-  width: 100px;
+  width: 80px;
+}
+
+.board-table .title {
+  text-align: center;
 }
 
 .post-body,
@@ -45,6 +53,6 @@ body {
 }
 
 
-#title{
+#no_line{
   text-decoration: none;
 }

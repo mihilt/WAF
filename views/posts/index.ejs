@@ -12,24 +12,24 @@
 
       <table class="table board-table table-sm border-bottom table-hover">
         <thead class="thead-light">
-          <tr>
-            <th scope="col">제목</th>
-            <th scope="col" class="author">글쓴이</th>
-            <th scope="col" class="date">작성일</th>
-          </tr>
+            <tr>
+              <th scope="col" class="title">제목</th>
+              <th scope="col" class="author">글쓴이</th>
+              <th scope="col" class="date">작성일</th>
+            </tr>
         </thead>
 
         <tbody>
           <% if(posts == null || posts.length == 0){ %>
             <tr>
-              <td colspan=2> 데이터가 없습니다 :( </td>
+              <td colspan=2> 데이터가 없습니다.</td>
             </tr>
           <% } %>
           <% posts.forEach(function(post) { %>
             <tr>
               <td>
-                <a href="/posts/<%= post._id %><%= getPostQueryString() %>">
-                  <div data-search-highlight="title" class="ellipsis"><%= post.title %></div>
+                <a id = "no_line" href="/posts/<%= post._id %><%= getPostQueryString() %>">
+                  <small><div data-search-highlight="title" class="ellipsis"><%= post.title %></div></small>
                 </a>
               </td>
               <td class="author">
