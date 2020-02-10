@@ -6,9 +6,6 @@ var passport = require('../config/passport');
 router.get('/', function(req, res){
   res.render('home/welcome');
 });
-router.get('/about', function(req, res){
-  res.render('home/about');
-});
 
 // Login
 router.get('/login', function (req,res) {
@@ -28,11 +25,11 @@ router.post('/login',
 
     if(!req.body.username){
       isValid = false;
-      errors.username = 'Username is required!';
+      errors.username = '아이디를 입력해주세요!';
     }
     if(!req.body.password){
       isValid = false;
-      errors.password = 'Password is required!';
+      errors.password = '패스워드를 입력해주세요!';
     }
 
     if(isValid){

@@ -9,7 +9,7 @@ util.parseError = function(errors){
     }
   }
   else if(errors.code == '11000' && errors.errmsg.indexOf('username') > 0) {
-    parsed.username = { message:'This username already exists!' };
+    parsed.username = { message:'이미 존재합니다!' };
   }
   else {
     parsed.unhandled = JSON.stringify(errors);
@@ -22,13 +22,13 @@ util.isLoggedin = function(req, res, next){
     next();
   }
   else {
-    req.flash('errors', {login:'Please login first'});
+    req.flash('errors', {login:'로그인 해주세요.'});
     res.redirect('/login');
   }
 }
 
 util.noPermission = function(req, res){
-  req.flash('errors', {login:"You don't have permission"});
+  req.flash('errors', {login:"권한이 없습니다."});
   req.logout();
   res.redirect('/login');
 }
@@ -52,35 +52,6 @@ util.getPostQueryString = function(req, res, next){
     return queryString;
   }
   next();
-}
-
-util.convertToTrees = function(array, idFieldName, parentIdFieldName, childrenFieldName){
-  var cloned = array.slice();
-
-  for(var i=cloned.length-1; i>-1; i--){
-    var parentId = cloned[i][parentIdFieldName];
-
-    if(parentId){
-      var filtered = array.filter(function(elem){
-        return elem[idFieldName].toString() == parentId.toString();
-      });
-
-      if(filtered.length){
-        var parent = filtered[0];
-
-        if(parent[childrenFieldName]){
-          parent[childrenFieldName].push(cloned[i]);
-        }
-        else {
-          parent[childrenFieldName] = [cloned[i]];
-        }
-
-      }
-      cloned.splice(i,1);
-    }
-  }
-
-  return cloned;
 }
 
 module.exports = util;
