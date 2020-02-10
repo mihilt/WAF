@@ -17,6 +17,7 @@ body {
 }
 .board-table .author,
 .board-table .date {
+  text-align: center;
   width: 100px;
 }
 

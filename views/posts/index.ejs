@@ -10,7 +10,7 @@
 
       <h2 class="mb-3">Board</h2>
 
-      <table class="board-table table table-sm border-bottom">
+      <table class="table board-table table-sm border-bottom table-hover">
 
         <thead class="thead-light">
           <tr>
@@ -47,9 +47,7 @@
       </table>
       <div class="row mb-3">
         <div class="col-2">
-          <% if(isAuthenticated){ %>
             <a class="btn btn-primary" href="/posts/new<%= getPostQueryString() %>">New</a>
-          <% } %>
         </div>
         <nav class="col-8">
           <%
