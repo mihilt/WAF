@@ -11,12 +11,11 @@
       <h2 class="mb-3">Board</h2>
 
       <table class="table board-table table-sm border-bottom table-hover">
-
         <thead class="thead-light">
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col" class="author">Author</th>
-            <th scope="col" class="date">Date</th>
+            <th scope="col">제목</th>
+            <th scope="col" class="author">글쓴이</th>
+            <th scope="col" class="date">작성일</th>
           </tr>
         </thead>
 
@@ -45,11 +44,14 @@
           <% }) %>
         </tbody>
       </table>
-      <div class="row mb-3">
-        <div class="col-2">
-            <a class="btn btn-primary" href="/posts/new<%= getPostQueryString() %>">New</a>
-        </div>
-        <nav class="col-8">
+
+      <div align="right">
+            <a class="btn btn-primary" href="/posts/new<%= getPostQueryString() %>">글쓰기</a>
+      </div>
+      <br>
+
+      <div align="center">
+        <nav>
           <%
             var offset = 2;
             var previousBtnEnabled = currentPage>1;
@@ -72,33 +74,39 @@
           </ul>
         </nav>
       </div>
-      <form action="/posts" method="get" class="post-index-tool">
-        <div class="form-row">
-          <div class="form-group col-3">
-            <label>Show</label>
-            <select name="limit" class="custom-select" onchange="this.parentElement.parentElement.parentElement.submit()">
-              <option value="5" <%= limit==5?'selected':'' %>>5 posts</option>
-              <option value="10" <%= limit==10?'selected':'' %>>10 posts</option>
-              <option value="20" <%= limit==20?'selected':'' %>>20 posts</option>
-            </select>
-          </div>
-          <div class="form-group col-9">
-            <label>Search</label>
-            <div class="input-group">
-              <select name="searchType" class="custom-select">
-                <option value="title,body" <%= searchType=='title,body'?'selected':'' %>>Title, Body</option>
-                <option value="title" <%= searchType=='title'?'selected':'' %>>Title</option>
-                <option value="body" <%= searchType=='body'?'selected':'' %>>Body</option>
-                <option value="author" <%= searchType=='author'?'selected':'' %>>Author</option>
-              </select>
-              <input minLength="3" type="text" name="searchText" value="<%= searchText %>">
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
+      <br>
+
+
+
+
+      <center>
+        <form action="/posts" method="get" class="post-index-tool">
+          <div class="form">
+            <div class="form-group col-md-9">
+              <div class="input-group">
+                <select name="searchType" class="custom-select">
+                  <option value="title,body,author" <%= searchType=='title,body,author'?'selected':'' %>>전체</option>
+                  <option value="title" <%= searchType=='title'?'selected':'' %>>제목</option>
+                  <option value="body" <%= searchType=='body'?'selected':'' %>>내용</option>
+                  <option value="author" <%= searchType=='author'?'selected':'' %>>글쓴이</option>
+                  <option value="title,body" <%= searchType=='title,body'?'selected':'' %>>제목+내용</option>
+                </select>
+                <input minLength="3" type="text" name="searchText" value="<%= searchText %>">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary" type="submit">검색</button>
+                </div>
               </div>
             </div>
+            <div class="form-group col-4">
+              <select name="limit" class="custom-select" onchange="this.parentElement.parentElement.parentElement.submit()">
+                <option value="5" <%= limit==5?'selected':'' %>>5 개</option>
+                <option value="10" <%= limit==10?'selected':'' %>>10 개</option>
+                <option value="20" <%= limit==20?'selected':'' %>>20 개</option>
+              </select>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </center>
     </div>
   </body>
 </html>

@@ -54,3 +54,7 @@ body {
 .comment-reply-enabled .comment-reply {
   display:inherit;
 }
+
+#title{
+  text-decoration: none;
+}
