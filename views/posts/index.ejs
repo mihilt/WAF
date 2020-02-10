@@ -85,11 +85,11 @@
             <div class="form-group col-md-9">
               <div class="input-group">
                 <select name="searchType" class="custom-select">
-                  <option value="title,body,author" <%= searchType=='title,body,author'?'selected':'' %>>전체</option>
+                  <option value="author" <%= searchType=='author'?'selected':'' %>>글쓴이</option>
                   <option value="title" <%= searchType=='title'?'selected':'' %>>제목</option>
                   <option value="body" <%= searchType=='body'?'selected':'' %>>내용</option>
-                  <option value="author" <%= searchType=='author'?'selected':'' %>>글쓴이</option>
                   <option value="title,body" <%= searchType=='title,body'?'selected':'' %>>제목+내용</option>
+                    <option value="title,body,author" <%= searchType=='title,body,author'?'selected':'' %>>전체</option>
                 </select>
                 <input minLength="3" type="text" name="searchText" value="<%= searchText %>">
                 <div class="input-group-append">
