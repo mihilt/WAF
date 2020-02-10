@@ -1,7 +1,7 @@
 var express  = require('express');
 var router = express.Router();
 var Post = require('../models/Post');
-var User = require('../models/user');
+var User = require('../models/User');
 var Comment = require('../models/Comment');
 var util = require('../util');
 
