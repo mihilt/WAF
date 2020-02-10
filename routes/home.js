@@ -32,7 +32,7 @@ router.post('/login',
     }
     if(!req.body.password){
       isValid = false;
-      errors.password = '패스워드를 입력해주세!';
+      errors.password = '패스워드를 입력해주세요!';
     }
 
     if(isValid){
