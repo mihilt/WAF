@@ -61,15 +61,14 @@ router.post('/', util.isLoggedin, function(req, res){
 // show
 router.get('/:id', function(req, res){
   var commentForm = req.flash('commentForm')[0] || { _id: null, form: {} };
-  var commentError = req.flash('commentError')[0] || { _id:null, parentComment: null, errors:{} };
+  var commentError = req.flash('commentError')[0] || { _id:null, errors:{} };
 
   Promise.all([
       Post.findOne({_id:req.params.id}).populate({ path: 'author', select: 'username' }),
       Comment.find({post:req.params.id}).sort('createdAt').populate({ path: 'author', select: 'username' })
     ])
     .then(([post, comments]) => {
-      var commentTrees = util.convertToTrees(comments, '_id','parentComment','childComments');
-      res.render('posts/show', { post:post, commentTrees:commentTrees, commentForm:commentForm, commentError:commentError});
+      res.render('posts/show', { post:post, comments:comments, commentForm:commentForm, commentError:commentError});
     })
     .catch((err) => {
       return res.json(err);
