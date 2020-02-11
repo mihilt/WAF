@@ -35,6 +35,10 @@ body {
   vertical-align: middle;
 }
 
+.count_comment{
+  color:#646464;
+}
+
 .post-body,
 .comment-text {
   white-space: pre-line;

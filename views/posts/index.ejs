@@ -29,7 +29,15 @@
             <tr>
               <td class ="title_contents">
                 <a id = "no_line" href="/posts/<%= post._id %><%= getPostQueryString() %>">
-                  <small><div data-search-highlight="title" class="ellipsis"><%= post.title %></div></small>
+                  <small>
+                    <div data-search-highlight="title" class="ellipsis">
+                      <%= post.title %>
+                      <% if(post.commentCount){ %>
+                        <small class = "count_comment">[<%= post.commentCount %>]</small>
+                      <% } %>
+                    </div>
+                  </small>
+
                 </a>
               </td>
               <td class="author">
