@@ -7,11 +7,8 @@
     <%- include('../partials/nav') %>
 
     <div class="container mb-3">
-
-      <br>
-
       <table class="table board-table table-sm border-bottom table-hover">
-        <thead class="thead-light">
+        <thead style="background-color: #fafafa;" >
             <tr>
               <th scope="col" class="title">제목</th>
               <th scope="col" class="author">글쓴이</th>
@@ -28,12 +25,12 @@
           <% posts.forEach(function(post) { %>
             <tr>
               <td class ="title_contents">
-                <a id = "no_line" href="/posts/<%= post._id %><%= getPostQueryString() %>">
+                <a id = "post_style" href="/posts/<%= post._id %><%= getPostQueryString() %>">
                   <small>
                     <div data-search-highlight="title" class="ellipsis">
                       <%= post.title %>
                       <% if(post.commentCount){ %>
-                        <small class = "count_comment">[<%= post.commentCount %>]</small>
+                        <small id = "count_comment">[<%= post.commentCount %>]</small>
                       <% } %>
                     </div>
                   </small>
@@ -105,16 +102,16 @@
                 </div>
               </div>
             </div>
-            <div class="form-group col-4">
-              <select name="limit" class="custom-select" onchange="this.parentElement.parentElement.parentElement.submit()">
-                <option value="5" <%= limit==5?'selected':'' %>>5 개</option>
-                <option value="10" <%= limit==10?'selected':'' %>>10 개</option>
-                <option value="20" <%= limit==20?'selected':'' %>>20 개</option>
-              </select>
-            </div>
+          </center>
+          <div class="form-group col-4" id = "show_how_many_posts">
+            <select name="limit" class="custom-select" onchange="this.parentElement.parentElement.parentElement.submit()">
+              <option value="5" <%= limit==5?'selected':'' %>>5 개</option>
+              <option value="10" <%= limit==10?'selected':'' %>>10 개</option>
+              <option value="20" <%= limit==20?'selected':'' %>>20 개</option>
+            </select>
           </div>
-        </form>
-      </center>
+        </div>
+      </form>
     </div>
   </body>
 </html>

@@ -1,5 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  font-size: 0.9em;
 }
 .breadcrumb-item {
   font-size: 0.8em !important;
@@ -35,9 +36,6 @@ body {
   vertical-align: middle;
 }
 
-.count_comment{
-  color:#646464;
-}
 
 .post-body,
 .comment-text {
@@ -61,8 +59,31 @@ body {
 .highlighted {
   background-color: yellow;
 }
+.container{
+  max-width: 650px;
+}
 
+.comment_style{
+  font-size : 0.8em;
+}
+
+#show_how_many_posts{
+  max-width: 120px;
+  float : right;
+}
+
+#count_comment{
+  color:#919191;
+}
 
 #no_line{
   text-decoration: none;
+}
+#post_style{
+  text-decoration: none;
+  color : black;
+}
+
+#post_info{
+  text-align : right;
 }

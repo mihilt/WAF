@@ -21,9 +21,35 @@ router.post('/', util.isLoggedin, checkPostId, function(req, res){
 });
 
 
+//delete
+router.delete('/:id', util.isLoggedin, checkPermission, checkPostId, function(req, res){
+  var post = res.locals.post;
+
+  Comment.findOne({_id:req.params.id}, function(err, comment){
+    if(err) return res.json(err);
+
+    // save updated comment
+    comment.isDeleted = true;
+    comment.save(function(err, comment){
+      if(err) return res.json(err);
+
+      return res.redirect('/posts/'+post._id+res.locals.getPostQueryString());
+    });
+  });
+});
+
 module.exports = router;
 
 // private functions
+
+function checkPermission(req, res, next){
+  Comment.findOne({_id:req.params.id}, function(err, comment){
+    if(err) return res.json(err);
+    if(comment.author != req.user.id) return util.noPermission(req, res);
+
+    next();
+  });
+}
 
 function checkPostId(req, res, next){
   Post.findOne({_id:req.query.postId}, function(err, post){
