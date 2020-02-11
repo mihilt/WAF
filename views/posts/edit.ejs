@@ -12,7 +12,7 @@
 
         <div class="form-group">
           <label for="title">제목</label>
-          <input type="text" id="title" name="title" value="<%= post.title %>" class="form-control <%= (errors.title)?'is-invalid':'' %>">
+          <input type="text" maxlength="19" id="title" name="title" value="<%= post.title %>" class="form-control <%= (errors.title)?'is-invalid':'' %>">
           <% if(errors.title){ %>
             <span class="invalid-feedback"><%= errors.title.message %></span>
           <% } %>

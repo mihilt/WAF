@@ -17,15 +17,17 @@ body {
   table-layout: fixed;
 }
 .board-table .author {
+  padding : 0px;
   vertical-align: middle;
   text-align: center;
-  width: 60px;
+  width: 50px;
 }
 
 .board-table .date {
+  padding : 7px 0px;
   vertical-align: middle;
   text-align: center;
-  width: 80px;
+  width: 70px;
 }
 
 .board-table .title {
@@ -35,6 +37,7 @@ body {
 .board-table .title_contents {
   vertical-align: middle;
 }
+
 
 
 .post-body,
