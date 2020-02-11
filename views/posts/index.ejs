@@ -102,14 +102,14 @@
                 </div>
               </div>
             </div>
+            <div class="form-group col-4" id = "show_how_many_posts">
+              <select name="limit" class="custom-select" onchange="this.parentElement.parentElement.parentElement.submit()">
+                <option value="5" <%= limit==5?'selected':'' %>>5 개</option>
+                <option value="10" <%= limit==10?'selected':'' %>>10 개</option>
+                <option value="20" <%= limit==20?'selected':'' %>>20 개</option>
+              </select>
+            </div>
           </center>
-          <div class="form-group col-4" id = "show_how_many_posts">
-            <select name="limit" class="custom-select" onchange="this.parentElement.parentElement.parentElement.submit()">
-              <option value="5" <%= limit==5?'selected':'' %>>5 개</option>
-              <option value="10" <%= limit==10?'selected':'' %>>10 개</option>
-              <option value="20" <%= limit==20?'selected':'' %>>20 개</option>
-            </select>
-          </div>
         </div>
       </form>
     </div>

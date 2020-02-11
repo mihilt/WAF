@@ -72,8 +72,8 @@ body {
 
 #show_how_many_posts{
   max-width: 120px;
-  float : right;
 }
+
 
 #count_comment{
   color:#919191;
@@ -89,4 +89,26 @@ body {
 
 #post_info{
   text-align : right;
+}
+
+#back_button{
+  float:left
+}
+#edit_delete_buttons{
+  margin : 0px 0px 0px 5px;
+  float:right;
+}
+#dut_gle{
+  float:left;
+  font-weight: bold;
+}
+
+#hr_style{
+  border: solid 0.5px;
+  color: gray;
+}
+
+#title_view{
+  background-color: #fafafa;
+  border-top: 0.5px solid gray;
 }
