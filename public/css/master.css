@@ -98,10 +98,7 @@ body {
   margin : 0px 0px 0px 5px;
   float:right;
 }
-#dut_gle{
-  float:left;
-  font-weight: bold;
-}
+
 
 #hr_style{
   border: solid 0.5px;
@@ -111,4 +108,9 @@ body {
 #title_view{
   background-color: #fafafa;
   border-top: 0.5px solid gray;
+}
+
+#comment_user{
+  font-size: 14px;
+  padding: 5px 0px;
 }
