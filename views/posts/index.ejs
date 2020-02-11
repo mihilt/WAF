@@ -27,7 +27,7 @@
           <% } %>
           <% posts.forEach(function(post) { %>
             <tr>
-              <td>
+              <td class ="title_contents">
                 <a id = "no_line" href="/posts/<%= post._id %><%= getPostQueryString() %>">
                   <small><div data-search-highlight="title" class="ellipsis"><%= post.title %></div></small>
                 </a>
@@ -38,7 +38,7 @@
                 </a>
               </td>
               <td class="date">
-                <small><span data-date="<%= post.createdAt %>"></span></small>
+                <small><span data-date-time="<%= post.createdAt %>"></span></small>
               </td>
             </tr>
           <% }) %>

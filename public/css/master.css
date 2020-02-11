@@ -16,17 +16,23 @@ body {
   table-layout: fixed;
 }
 .board-table .author {
+  vertical-align: middle;
   text-align: center;
   width: 60px;
 }
 
 .board-table .date {
+  vertical-align: middle;
   text-align: center;
   width: 80px;
 }
 
 .board-table .title {
   text-align: center;
+}
+
+.board-table .title_contents {
+  vertical-align: middle;
 }
 
 .post-body,
