@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
   username:{
     type:String,
     required:[true,'필수 항목입니다!'],
-    match:[/^[a-zA-Z0-9]{2,6}$/,'2~6 자의 영어와 숫자의 조합만 사용이 가능합니다!'],
+    match:[/^[a-zA-Z0-9]{3,6}$/,'3~6 자의 영어와 숫자의 조합만 사용이 가능합니다!'],
     trim:true,
     unique:true
   },
