@@ -39,9 +39,9 @@
 
 
       <% if(comments.length){ %>
-        <div id = "comment_box" class="mt-3 comment_style border-bottom">
+        <div id = "comment_box" class="mt-3 comment_style">
           <% comments.forEach(function(comment) { %>
-            <div class="border-top p-2">
+            <div class="border-bottom p-2">
               <% if(comment.isDeleted){ %>
                 <center><div class="text-muted p-2">(삭제된 덧글입니다.)</span></div></center>
               <% } else { %>
