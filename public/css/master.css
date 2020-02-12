@@ -31,12 +31,13 @@ body {
 }
 
 .board-table .title {
+  vertical-align: middle;
   text-align: center;
 }
 
 .board-table .title_contents {
   vertical-align: middle;
-    height: 50px;
+  height: 50px;
 }
 
 
@@ -69,6 +70,12 @@ body {
 .comment_style{
   font-size : 0.8em;
 }
+
+.table td{
+  border-top : none;
+  border-bottom: 1px solid #dee2e6;
+}
+
 
 #show_how_many_posts{
   max-width: 120px;
@@ -105,6 +112,7 @@ body {
 #title_view{
   background-color: #fafafa;
   border-top: 0.5px solid gray;
+  border-bottom:1px solid rgba(0,0,0,.1);
 }
 
 #comment_user{
@@ -124,9 +132,4 @@ body {
 
 #tbody{
   border-top: none;
-}
-
-.table td{
-  border-top : none;
-  border-bottom: 1px solid #dee2e6;
 }
