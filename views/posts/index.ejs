@@ -38,7 +38,7 @@
                 </a>
               </td>
               <td class="author">
-                <a href="/posts<%= getPostQueryString(false, { searchType:'author!', searchText:post.author.username }) %>">
+                <a href="/posts/?searchType=author!&searchText=<%= post.author.username %>">
                   <small><div data-search-highlight="author" class="ellipsis"><%= post.author ? post.author.username : "" %></div></small>
                 </a>
               </td>

@@ -11,7 +11,7 @@
         <h5 class="card-header p-2" id = "title_view"  data-search-highlight="title"><%= post.title %></h5>
             <div class="post-info p-1">
                 <div id = "post_info">
-                  <a href="/posts<%= getPostQueryString(false, { searchType:'author!', searchText:post.author.username }) %>">
+                  <a href="/posts/?searchType=author!&searchText=<%= post.author.username %>">
                     <span data-search-highlight="author"><%= post.author ? post.author.username : "" %></span>
                   </a>
                   <span> | </span>
@@ -47,7 +47,7 @@
               <% } else { %>
 
                 <div id ="comment_user">
-                  <a href="/posts<%= getPostQueryString(false, { searchType:'author!', searchText:post.author.username }) %>">
+                  <a href="/posts/?searchType=author!&searchText=<%= post.author.username %>">
                     <%= comment.author.username %>
                   </a>
                 </div>
