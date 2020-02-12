@@ -36,6 +36,7 @@ body {
 
 .board-table .title_contents {
   vertical-align: middle;
+    height: 50px;
 }
 
 
@@ -119,4 +120,13 @@ body {
   #thead{
     display: none;
   }
+}
+
+#tbody{
+  border-top: none;
+}
+
+.table td{
+  border-top : none;
+  border-bottom: 1px solid #dee2e6;
 }
