@@ -38,6 +38,7 @@ body {
   vertical-align: middle;
 }
 
+
 .post-body,
 .comment-text {
   white-space: pre-line;
@@ -80,10 +81,7 @@ body {
 #no_line{
   text-decoration: none;
 }
-#post_style{
-  text-decoration: none;
-  color : black;
-}
+
 
 #post_info{
   text-align : right;
@@ -111,4 +109,8 @@ body {
 #comment_user{
   font-size: 14px;
   padding: 5px 0px;
+}
+
+#c_pointer{
+  cursor:pointer;
 }
