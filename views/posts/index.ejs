@@ -8,14 +8,14 @@
 
     <div class="container mb-3">
       <table class="table board-table table-sm border-bottom table-hover">
-        <thead style="background-color: #fafafa;" >
-            <tr>
-              <th scope="col" class="title">제목</th>
-              <th scope="col" class="author">글쓴이</th>
-              <th scope="col" class="date">작성일</th>
-            </tr>
-        </thead>
-
+          <thead id="thead" style="background-color: #fafafa;" >
+              <tr>
+                <th scope="col" class="title">제목</th>
+                <th scope="col" class="author">글쓴이</th>
+                <th scope="col" class="date">작성일</th>
+              </tr>
+          </thead>
+          
         <tbody>
           <% if(posts == null || posts.length == 0){ %>
             <tr>
