@@ -44,6 +44,8 @@ router.get('/', async function(req, res){
             username: 1,
           },
           createdAt: 1,
+          views: 1,
+          numId: 1,
           commentCount: { $size: '$comments'}
       } },
     ]).exec();
@@ -90,6 +92,8 @@ router.get('/:id', function(req, res){
     ])
     .then(([post, comments]) => {
       res.render('posts/show', { post:post, comments:comments, commentForm:commentForm, commentError:commentError});
+      post.views++;
+      post.save();
     })
     .catch((err) => {
       return res.json(err);

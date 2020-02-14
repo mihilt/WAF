@@ -9,17 +9,19 @@
     <div class="container mb-3">
       <div>
         <h5 class="p-2" id = "title_view"  data-search-highlight="title"><%= post.title %></h5>
-            <div class="post-info p-1">
-                <div id = "post_info">
-                  <a href="/posts/?searchType=author!&searchText=<%= post.author.username %>">
-                    <span data-search-highlight="author"><%= post.author ? post.author.username : "" %></span>
-                  </a>
-                  <span> | </span>
-                  <span data-date-time="<%= post.createdAt %>"></span>
-
-                </div>
+            <div class="post-info p-1 clearfix">
+              <div class="float-left">
+                <a href="/posts/?searchType=author!&searchText=<%= post.author.username %>">
+                  <span data-search-highlight="author"><%= post.author ? post.author.username : "" %></span>
+                </a>
+                <span> | </span>
+                <span data-date-time="<%= post.createdAt %>"></span>
               </div>
-              <div class="post-body p-2" data-search-highlight="body"><%= post.body %></div>
+              <div class="post-info p-1 float-right" id="post_info_right">
+                <span>조회수</span> : <span data-search-highlight="author"><%= post.views %></span>
+              </div>
+            </div>
+            <div class="post-body p-2" data-search-highlight="body"><%= post.body %></div>
       </div>
       <hr>
       <div>

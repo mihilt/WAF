@@ -30,6 +30,14 @@ body {
   width: 70px;
 }
 
+.board-table .numId,
+.board-table .views{
+  width: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
 .board-table .title {
   vertical-align: middle;
   text-align: center;
@@ -76,6 +84,10 @@ body {
   border-bottom: 1px solid #dee2e6;
 }
 
+.center{
+  text-align: center;
+}
+
 
 #show_how_many_posts{
   max-width: 120px;
@@ -91,7 +103,7 @@ body {
 }
 
 
-#post_info{
+#post_info_right{
   text-align : right;
 }
 
@@ -124,12 +136,15 @@ body {
   cursor:pointer;
 }
 
-@media screen and (max-width: 575px) {
-  #thead{
-    display: none;
-  }
-}
 
 #tbody{
   border-top: none;
+}
+
+
+@media screen and (max-width: 575px) {
+  .mobile_hide{
+    display: none;
+  }
+
 }

@@ -8,23 +8,30 @@
 
     <div class="container mb-3">
       <table class="table board-table table-sm table-hover">
-          <thead id="thead" style="background-color: #fafafa;" >
+          <thead class="mobile_hide" style="background-color: #fafafa;" >
               <tr>
+                <th scope="col" class="numId">번호</th>
                 <th scope="col" class="title">제목</th>
                 <th scope="col" class="author">글쓴이</th>
                 <th scope="col" class="date">작성일</th>
+                <th scope="col" class="views">조회</th>
               </tr>
           </thead>
         <tbody>
           <% if(posts == null || posts.length == 0){ %>
             <tr>
-              <td class ="title_contents"> 데이터가 없습니다.</td>
-              <td class= "author"></td>
-              <td class="date"></td>
+              <td colspan=5 class ="text-muted p-2 center title_contents"> 데이터가 없습니다.</td>
             </tr>
           <% } %>
           <% posts.forEach(function(post) { %>
             <tr>
+              <td class="numId mobile_hide ">
+                <small>
+                  <div class="ellipsis">
+                    <%= post.numId %>
+                  </div>
+                </small>
+              </td>
               <td class ="title_contents" id="c_pointer" onClick="location.href='/posts/<%= post._id %><%= getPostQueryString() %>'">
                 <small>
                     <div data-search-highlight="title" class="ellipsis">
@@ -43,7 +50,10 @@
               <td class="date">
                 <small><span data-date-time="<%= post.createdAt %>"></span></small>
               </td>
-            </tr>
+              <td class="views mobile_hide">
+                <small><%= post.views %></small>
+              </td>
+              </tr>
           <% }) %>
         </tbody>
       </table>
