@@ -1,5 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  font-size: 0.9em;
 }
 .breadcrumb-item {
   font-size: 0.8em !important;
@@ -16,25 +17,44 @@ body {
   table-layout: fixed;
 }
 .board-table .author {
+  padding : 0px;
+  vertical-align: middle;
   text-align: center;
-  width: 60px;
+  width: 50px;
 }
 
 .board-table .date {
+  padding : 7px 0px;
+  vertical-align: middle;
   text-align: center;
-  width: 80px;
+  width: 70px;
 }
 
+.board-table .numId,
+.board-table .views{
+  width: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
 .board-table .title {
+  vertical-align: middle;
   text-align: center;
 }
+
+.board-table .title_contents {
+  vertical-align: middle;
+  height: 50px;
+}
+
 
 .post-body,
 .comment-text {
   white-space: pre-line;
 }
 .post-info{
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 
 .user-form {
@@ -51,8 +71,80 @@ body {
 .highlighted {
   background-color: yellow;
 }
+.container{
+  max-width: 650px;
+}
 
+.comment_style{
+  font-size : 0.8em;
+}
+
+.table td{
+  border-top : none;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.center{
+  text-align: center;
+}
+
+
+#show_how_many_posts{
+  max-width: 120px;
+}
+
+
+#count_comment{
+  color:#919191;
+}
 
 #no_line{
   text-decoration: none;
+}
+
+
+#post_info_right{
+  text-align : right;
+}
+
+#back_button{
+  float:left
+}
+#edit_delete_buttons{
+  margin : 0px 0px 0px 5px;
+  float:right;
+}
+
+
+#hr_style{
+  border: solid 0.5px;
+  color: gray;
+}
+
+#title_view{
+  background-color: #fafafa;
+  border-top: 0.5px solid gray;
+  border-bottom:1px solid rgba(0,0,0,.1);
+}
+
+#comment_user{
+  font-size: 14px;
+  padding: 5px 0px;
+}
+
+#c_pointer{
+  cursor:pointer;
+}
+
+
+#tbody{
+  border-top: none;
+}
+
+
+@media screen and (max-width: 575px) {
+  .mobile_hide{
+    display: none;
+  }
+
 }

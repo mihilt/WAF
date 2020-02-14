@@ -1,5 +1,3 @@
-// models/User.js
-
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
@@ -8,7 +6,7 @@ var userSchema = mongoose.Schema({
   username:{
     type:String,
     required:[true,'필수 항목입니다!'],
-    match:[/^.{4,12}$/,'4~12 자의 문자만 사용 가능합니다!'],
+    match:[/^[a-zA-Z0-9]{3,6}$/,'3~6 자의 영어와 숫자의 조합만 사용이 가능합니다!'],
     trim:true,
     unique:true
   },
@@ -19,8 +17,6 @@ var userSchema = mongoose.Schema({
   },
   name:{
     type:String,
-    required:[true,'필수 항목입니다!'],
-    match:[/^.{2,12}$/,'2~12 자의 문자만 사용 가능합니다!'],
     trim:true
   },
   email:{
@@ -55,37 +51,37 @@ var passwordRegexErrorMessage = '4~16자의 알파벳과 숫자 조합이 필요
 userSchema.path('password').validate(function(v) {
   var user = this;
 
-  // create user
-  if(user.isNew){
-    if(!user.passwordConfirmation){
-      user.invalidate('passwordConfirmation', '필수 항목입니다!');
-    }
-
-    if(!passwordRegex.test(user.password)){
-      user.invalidate('password', passwordRegexErrorMessage);
-    }
-    else if(user.password !== user.passwordConfirmation) {
-      user.invalidate('passwordConfirmation', '비밀번호 확인이 일치하지 않습니다!');
-    }
+// create user
+if(user.isNew){
+  if(!user.passwordConfirmation){
+    user.invalidate('passwordConfirmation', '필수 항목입니다!');
   }
 
-  // update user
-  if(!user.isNew){
-     if(!user.currentPassword){
-       user.invalidate('currentPassword', '현재 비밀번호가 필요합니다!');
-     }
-     else if(!bcrypt.compareSync(user.currentPassword, user.originalPassword)){
-       user.invalidate('currentPassword', '현재 비밀번호가 필요합니다!');
-     }
+  if(!passwordRegex.test(user.password)){
+    user.invalidate('password', passwordRegexErrorMessage);
+  }
+  else if(user.password !== user.passwordConfirmation) {
+    user.invalidate('passwordConfirmation', '비밀번호 확인이 일치하지 않습니다!');
+  }
+}
 
-     if(user.newPassword && !passwordRegex.test(user.newPassword)){
-       user.invalidate("newPassword", passwordRegexErrorMessage);
-     }
-     else if(user.newPassword !== user.passwordConfirmation) {
-       user.invalidate('passwordConfirmation', '비밀번호 확인이 일치하지 않습니다!');
-     }
+// update user
+if(!user.isNew){
+   if(!user.currentPassword){
+     user.invalidate('currentPassword', '현재 비밀번호가 필요합니다!');
    }
- });
+   else if(!bcrypt.compareSync(user.currentPassword, user.originalPassword)){
+     user.invalidate('currentPassword', '현재 비밀번호가 필요합니다!');
+   }
+
+   if(user.newPassword && !passwordRegex.test(user.newPassword)){
+     user.invalidate("newPassword", passwordRegexErrorMessage);
+   }
+   else if(user.newPassword !== user.passwordConfirmation) {
+     user.invalidate('passwordConfirmation', '비밀번호 확인이 일치하지 않습니다!');
+   }
+ }
+});
 
 // hash password
 userSchema.pre('save', function (next){

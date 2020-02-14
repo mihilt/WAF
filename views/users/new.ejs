@@ -44,7 +44,7 @@
         <br>
 
         <div class="form-group row">
-          <label for="name" class="col-sm-3 col-form-label">*이름</label>
+          <label for="name" class="col-sm-3 col-form-label">이름</label>
           <div class="col-sm-9">
             <input type="text" id="name" name="name" value="<%= user.name %>" class="form-control <%= (errors.name)?'is-invalid':'' %>">
             <% if(errors.name){ %>
@@ -61,19 +61,15 @@
             <% } %>
           </div>
         </div>
-
-        <p>
-          <small>*필수항목</small>
-        </p>
-
+        <br>
         <% if(errors.unhandled){ %>
           <div class="alert alert-danger">
             <%= errors.unhandled %>
           </div>
         <% } %>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group" align ="right">
+          <button type="submit" class="btn btn-primary">등록</button>
         </div>
 
       </form>

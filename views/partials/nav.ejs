@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+<nav class="navbar navbar-expand-sm navbar-light mb-3" style="background-color: #fafafa;">
   <div class="container">
     <div class="navbar-brand"><a href="/posts" id = "no_line">WS And Friends</a></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -9,11 +9,11 @@
 
       <ul class="navbar-nav ml-auto">
         <% if(isAuthenticated){ %>
-          <li class="nav-item"><a href="/users/<%= currentUser.username %>" class="nav-link">My Account</a></li>
-          <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+          <li class="nav-item"><a href="/users/<%= currentUser.username %>" class="nav-link">내 정보</a></li>
+          <li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a></li>
         <% } else { %>
-          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-          <li class="nav-item"><a href="/users/new" class="nav-link">Sign Up</a></li>
+          <li class="nav-item"><a href="/login" class="nav-link">로그인</a></li>
+          <li class="nav-item"><a href="/users/new" class="nav-link">회원가입</a></li>
         <% } %>
       </ul>
     </div>

@@ -8,7 +8,7 @@
 
     <div class="container mb-3">
 
-      <h3 class="contentBoxTop"><%= user.username %></h3>
+      <h3 class="contentBoxTop"><%= user.username %> 의 정보</h3>
 
       <form action="/users" method="post">
         <fieldset disabled>
@@ -27,7 +27,7 @@
         </fieldset>
       </form>
 
-      <div>
+      <div align="right">
         <% if(isAuthenticated && currentUser.id == user.id){ %>
           <a class="btn btn-primary" href="/users/<%= user.username %>/edit">수정</a>
         <% } %>

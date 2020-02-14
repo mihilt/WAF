@@ -7,52 +7,68 @@
     <%- include('../partials/nav') %>
 
     <div class="container mb-3">
-      <div class="card">
-        <h5 class="card-header p-2" data-search-highlight="title"><%= post.title %></h5>
-            <div class="post-info card m-2 p-2">
-              <div>
-                <a href="/posts<%= getPostQueryString(false, { searchType:'author!', searchText:post.author.username }) %>">
+      <div>
+        <h5 class="p-2" id = "title_view"  data-search-highlight="title"><%= post.title %></h5>
+            <div class="post-info p-1 clearfix">
+              <div class="float-left">
+                <a href="/posts/?searchType=author!&searchText=<%= post.author.username %>">
                   <span data-search-highlight="author"><%= post.author ? post.author.username : "" %></span>
                 </a>
                 <span> | </span>
                 <span data-date-time="<%= post.createdAt %>"></span>
-              <% if(post.updatedAt) { %>
-                <div><span>수정일</span> : <span data-date-time="<%= post.updatedAt %>"></span></div>
-              <% } %>
+              </div>
+              <div class = "float-right">
+                <span>조회수</span> : <span data-search-highlight="author"><%= post.views %></span>
               </div>
             </div>
-            <div class="post-body p-3" data-search-highlight="body">
-              <%= post.body %>
-            </div>
+            <div class="post-body p-2" data-search-highlight="body"><%= post.body %></div>
+      </div>
+      <hr>
+      <div>
+        <div class="mt-3" >
+          <a class="btn btn-primary btn-sm" href="/posts<%= getPostQueryString() %>">뒤로</a>
+          <% if(isAuthenticated && post.author && currentUser.id == post.author.id){ %>
+          <form action="/posts/<%= post._id %>?_method=delete<%= getPostQueryString(true) %>" method="post" class="d-inline">
+            <a id="edit_delete_buttons" class="btn btn-primary btn-sm" href="javascript:void(0)" onclick="confirm('삭제하시겠습니까?')?this.parentElement.submit():null;">삭제</a>
+          </form>
+          <a id="edit_delete_buttons" class="btn btn-primary btn-sm" href="/posts/<%= post._id %>/edit<%= getPostQueryString() %>">수정</a>
+          <% } %>
+        </div>
       </div>
 
-      <div class="mt-3" align = "right">
-        <a class="btn btn-primary" href="/posts<%= getPostQueryString() %>">뒤로</a>
-        <% if(isAuthenticated && post.author && currentUser.id == post.author.id){ %>
-          <a class="btn btn-primary" href="/posts/<%= post._id %>/edit<%= getPostQueryString() %>">수정</a>
-          <form action="/posts/<%= post._id %>?_method=delete<%= getPostQueryString(true) %>" method="post" class="d-inline">
-            <a class="btn btn-primary" href="javascript:void(0)" onclick="confirm('삭제하시겠습니까?')?this.parentElement.submit():null;">삭제</a>
-          </form>
-        <% } %>
-      </div>
+      <hr id="hr_style">
+
+
 
       <% if(comments.length){ %>
-        <div class="mt-3 border-bottom">
+        <div id = "comment_box" class="mt-3 comment_style">
           <% comments.forEach(function(comment) { %>
-            <div class="border-top">
-              <div class="row pt-1 pb-1">
-                  <a href="/posts<%= getPostQueryString(false, { searchType:'author!', searchText:post.author.username }) %>">
-                    <div class="col-3 col-md-2 col-lg-1 pl-4"><%= comment.author.username %></div>
+            <div class="border-bottom p-2">
+              <% if(comment.isDeleted){ %>
+                <center><div class="text-muted p-2">(삭제된 덧글입니다.)</span></div></center>
+              <% } else { %>
+
+                <div id ="comment_user">
+                  <a href="/posts/?searchType=author!&searchText=<%= comment.author.username %>">
+                    <%= comment.author.username %>
                   </a>
-                <div class="col-9 col-md-10 col-lg-11">
-                  <div class="comment-show">
+                </div>
+                <div>
+                  <div class="comment-show clearfix">
                     <div class="comment-text mb-3"><%= comment.text %></div>
-                    <small class="d-block">
-                      (<span data-date-time="<%= comment.createdAt %>"></span>)
-                    </small>
+                      <small>
+                      <span data-date-time="<%= comment.createdAt %>"></span>
+                        <% if(isAuthenticated && comment.author && currentUser.id == comment.author.id){ %>
+                          <form action="/comments/<%= comment._id %>?postId=<%= post._id %>&_method=delete<%= getPostQueryString(true) %>" method="post" class="d-inline">
+                            <a class="float-right" href="javascript:void(0)" onclick="confirm('삭제하시겠습니까?')?this.parentElement.submit():null;">삭제</a>
+                          </form>
+                        <% } %>
+                      </small>
+
                   </div>
                 </div>
-              </div>
+
+               <% } %>
             </div>
           <% }) %>
         </div>
@@ -62,10 +78,10 @@
         <form action="/comments?postId=<%= post._id %><%= getPostQueryString(true) %>" method="post">
           <fieldset <%= !isAuthenticated?'disabled':'' %>>
             <div class="row">
-              <div class="col-8">
-                <textarea id="text" name="text" rows="2" class="form-control <%= (commentError.errors.text)?'is-invalid':'' %>"><%= commentForm.form.text %></textarea>
+              <div class="col-9">
+                <textarea placeholder="덧글을 입력하세요." id="text" name="text" rows="2" class="form-control <%= (commentError.errors.text)?'is-invalid':'' %>"><%= commentForm.form.text %></textarea>
               </div>
-              <div class="col-4">
+              <div class="col-3">
                 <button type="submit" class="btn btn-primary h-100 mr-2">등록</button>
               </div>
             </div>
@@ -76,9 +92,11 @@
         </form>
       </div>
 
+
       <!-- 목록  -->
 
       <!-- 목록 끝  -->
     </div>
+
   </body>
 </html>

@@ -7,40 +7,53 @@
     <%- include('../partials/nav') %>
 
     <div class="container mb-3">
-
-      <br>
-
-      <table class="table board-table table-sm border-bottom table-hover">
-        <thead class="thead-light">
-            <tr>
-              <th scope="col" class="title">제목</th>
-              <th scope="col" class="author">글쓴이</th>
-              <th scope="col" class="date">작성일</th>
-            </tr>
-        </thead>
-
+      <table class="table board-table table-sm table-hover">
+          <thead class="mobile_hide" style="background-color: #fafafa;" >
+              <tr>
+                <th scope="col" class="numId">번호</th>
+                <th scope="col" class="title">제목</th>
+                <th scope="col" class="author">글쓴이</th>
+                <th scope="col" class="date">작성일</th>
+                <th scope="col" class="views">조회</th>
+              </tr>
+          </thead>
         <tbody>
           <% if(posts == null || posts.length == 0){ %>
             <tr>
-              <td colspan=2> 데이터가 없습니다.</td>
+              <td colspan=5 class ="text-muted p-2 center title_contents"> 데이터가 없습니다.</td>
             </tr>
           <% } %>
           <% posts.forEach(function(post) { %>
             <tr>
-              <td>
-                <a id = "no_line" href="/posts/<%= post._id %><%= getPostQueryString() %>">
-                  <small><div data-search-highlight="title" class="ellipsis"><%= post.title %></div></small>
-                </a>
+              <td class="numId mobile_hide ">
+                <small>
+                  <div class="ellipsis">
+                    <%= post.numId %>
+                  </div>
+                </small>
               </td>
-              <td class="author">
-                <a href="/posts<%= getPostQueryString(false, { searchType:'author!', searchText:post.author.username }) %>">
+              <td class ="title_contents" id="c_pointer" onClick="location.href='/posts/<%= post._id %><%= getPostQueryString() %>'">
+                <small>
+                    <div data-search-highlight="title" class="ellipsis">
+                      <%= post.title %>
+                      <% if(post.commentCount){ %>
+                        <small id = "count_comment">[<%= post.commentCount %>]</small>
+                      <% } %>
+                    </div>
+                  </small>
+              </td>
+              <td class="author" id="c_pointer" onClick="location.href='/posts/?searchType=author!&searchText=<%= post.author.username %>'">
+                <a href="/posts/?searchType=author!&searchText=<%= post.author.username %>">
                   <small><div data-search-highlight="author" class="ellipsis"><%= post.author ? post.author.username : "" %></div></small>
                 </a>
               </td>
               <td class="date">
-                <small><span data-date="<%= post.createdAt %>"></span></small>
+                <small><span data-date-time="<%= post.createdAt %>"></span></small>
               </td>
-            </tr>
+              <td class="views mobile_hide">
+                <small><%= post.views %></small>
+              </td>
+              </tr>
           <% }) %>
         </tbody>
       </table>
@@ -75,6 +88,7 @@
         </nav>
       </div>
       <br>
+      <br>
 
 
 
@@ -97,16 +111,16 @@
                 </div>
               </div>
             </div>
-            <div class="form-group col-4">
+            <div class="form-group col-4" id = "show_how_many_posts">
               <select name="limit" class="custom-select" onchange="this.parentElement.parentElement.parentElement.submit()">
                 <option value="5" <%= limit==5?'selected':'' %>>5 개</option>
                 <option value="10" <%= limit==10?'selected':'' %>>10 개</option>
                 <option value="20" <%= limit==20?'selected':'' %>>20 개</option>
               </select>
             </div>
-          </div>
-        </form>
-      </center>
+          </center>
+        </div>
+      </form>
     </div>
   </body>
 </html>
