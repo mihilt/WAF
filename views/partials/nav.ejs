@@ -1,12 +1,11 @@
 
 <nav class="navbar navbar-expand-sm navbar-light mb-3" style="background-color: #fafafa;">
   <div class="container">
-    <div class="navbar-brand"><a href="/posts" id = "no_line">WS And Friends</a></div>
+    <div class="navbar-brand"><a href="/posts"><img class='LOGO' src="../images/WAF_LOGO.png"></a></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
       <ul class="navbar-nav ml-auto">
         <% if(isAuthenticated){ %>
           <li class="nav-item"><a href="/users/<%= currentUser.username %>" class="nav-link">내 정보</a></li>

@@ -47,7 +47,6 @@
               <% if(comment.isDeleted){ %>
                 <center><div class="text-muted p-2">(삭제된 덧글입니다.)</span></div></center>
               <% } else { %>
-
                 <div id ="comment_user">
                   <a href="/posts/?searchType=author!&searchText=<%= comment.author.username %>">
                     <%= comment.author.username %>
@@ -64,10 +63,8 @@
                           </form>
                         <% } %>
                       </small>
-
                   </div>
                 </div>
-
                <% } %>
             </div>
           <% }) %>
@@ -79,7 +76,7 @@
           <fieldset <%= !isAuthenticated?'disabled':'' %>>
             <div class="row">
               <div class="col-9">
-                <textarea placeholder="덧글을 입력하세요." id="text" name="text" rows="2" class="form-control <%= (commentError.errors.text)?'is-invalid':'' %>"><%= commentForm.form.text %></textarea>
+                <textarea placeholder="<%= !isAuthenticated? '로그인을 먼저 해주세요.' : '덧글을 입력하세요.' %>" id="text" name="text" rows="2" class="form-control<%= (commentError.errors.text)?'is-invalid':'' %>"><%= commentForm.form.text %></textarea>
               </div>
               <div class="col-3">
                 <button type="submit" class="btn btn-primary h-100 mr-2">등록</button>
@@ -91,12 +88,6 @@
           </fieldset>
         </form>
       </div>
-
-
-      <!-- 목록  -->
-
-      <!-- 목록 끝  -->
     </div>
-
   </body>
 </html>
