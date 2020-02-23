@@ -88,12 +88,15 @@ body {
   text-align: center;
 }
 
-.LOGO{
+#LOGO{
   display: block;
-  max-width:200px;
-  max-height:95px;
+  max-width:190px;
   width: auto;
   height: auto;
+}
+
+#no_line{
+  text-decoration: none;
 }
 
 #show_how_many_posts{
