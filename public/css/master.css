@@ -3,6 +3,12 @@ body {
   font-size: 0.9em;
 }
 
+iframe {
+  display: block;
+  margin: 0px auto;
+  max-width: 600px;
+}
+
 .breadcrumb-item {
   font-size: 0.8em !important;
 }
@@ -167,5 +173,9 @@ body {
     margin: 0px auto;
     max-width: 280px;
   }
-
+  iframe {
+    display: block;
+    margin: 0px auto;
+    max-width: 280px;
+  }
 }
