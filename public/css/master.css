@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 0.9em;
 }
+
 .breadcrumb-item {
   font-size: 0.8em !important;
 }
@@ -88,6 +89,14 @@ body {
   text-align: center;
 }
 
+.word_break{
+  word-break:break-all;
+}
+
+#register_button{
+  height: 62px;
+}
+
 #LOGO{
   display: block;
   max-width:190px;
@@ -151,6 +160,12 @@ body {
 @media screen and (max-width: 575px) {
   .mobile_hide{
     display: none;
+  }
+
+  img {
+    display: block;
+    margin: 0px auto;
+    max-width: 280px;
   }
 
 }
