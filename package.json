@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mihilt/board_1.git"
+    "url": "git+https://github.com/mihilt/WAF.git"
   },
   "bugs": {
-    "url": "https://github.com/mihilt/board_1/issues"
+    "url": "https://github.com/mihilt/WAF/issues"
   },
-  "homepage": "https://github.com/mihilt/board_1#readme"
+  "homepage": "https://github.com/mihilt/WAF#readme"
 }
